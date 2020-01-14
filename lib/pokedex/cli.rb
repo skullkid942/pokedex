@@ -1,11 +1,21 @@
-Class Pokedex::CLI 
+class Pokedex::CLI 
+  
+  site = "https://gamewith.net/pokemon-swordshield/article/show/13537"
+  
+  page = Nokogiri::HTML(open("https://gamewith.net/pokemon-swordshield/article/show/13537"))
   
   def call
     puts "Welcome to the Galarian Pokedex Reader"
+    list 
+    menu 
+    goodbye 
   end 
   
   def list 
-    pokemon list 
+    pokemon = page.css "a.w-idb-element td br" 
+    #lists all pokemon on page 
+    pokemon.map do |pokemon|
+      puts pokemon.text 
   end 
   
   def name 
@@ -20,9 +30,9 @@ Class Pokedex::CLI
     type
   end 
   
-  def location
-    location/how to obtain
-  end 
+ # def location
+  #  location/how to obtain
+  #end 
   
   def menu
     input = nil
@@ -46,4 +56,5 @@ Class Pokedex::CLI
   end 
   
   
+end
 end 

@@ -1,0 +1,5 @@
+class Pokedex::Pokemon
+  
+  
+  
+end 
