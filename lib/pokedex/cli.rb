@@ -1,8 +1,4 @@
-class Pokedex::CLI 
-  
-  site = "https://gamewith.net/pokemon-swordshield/article/show/13537"
-  
-  page = Nokogiri::HTML(open("https://gamewith.net/pokemon-swordshield/article/show/13537"))
+class CLI 
   
   def call
     puts "Welcome to the Galarian Pokedex Reader"
@@ -12,10 +8,7 @@ class Pokedex::CLI
   end 
   
   def list 
-    pokemon = page.css "a.w-idb-element td br" 
-    #lists all pokemon on page 
-    pokemon.map do |pokemon|
-      puts pokemon.text 
+    Pokemon.all 
   end 
   
   def name 
@@ -55,6 +48,4 @@ class Pokedex::CLI
     
   end 
   
-  
-end
 end 
